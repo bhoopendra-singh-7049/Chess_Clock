@@ -11,6 +11,8 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .btn-primary {
