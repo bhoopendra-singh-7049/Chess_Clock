@@ -1,0 +1,83 @@
+<div class="container-fluid p-4">
+    <div class="container text-center">
+        <div class="row justify-content-evenly">
+            <button (click)="startAndStopClock(true)" type="button" [disabled]="disableWhiteButton"
+                class="btn btn-outline-light circle-white">
+                <span>
+                    STOP
+                </span>
+            </button>
+        </div>
+
+        <div class="row justify-content-evenly">
+            <div class="mt-4" style="rotate: 180deg;">
+                <span class="badge rounded-pill bg-white fs-4 text-dark">
+                    {{ whitePlayer.minutes | number: '2.0' }} :
+                    {{ whitePlayer.seconds | number:'2.0'}}
+                </span>
+            </div>
+            <div class="d-flex justify-content-center">
+                <span class="position-relative p-1 rounded-circle mt-3" style="height: 15px; width: 15px;"
+                    [ngStyle]="{'background-color': disableWhiteButton ? 'transparent': '#b1f0b1'}"
+                    ngClass="blink-animation">
+                </span>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="min-height: 30vh; align-items: center; gap: 5px;">
+            <div class="col" *ngIf="!isGameStarted">
+                <button class="badge btn bg-success" (click)="startGame()">
+                    <i class="bi bi-play-fill fs-3 text-white"></i>
+                </button>
+            </div>
+            <div class="col" *ngIf="isGameStarted && !isPaused">
+                <button class="badge btn bg-danger" (click)="pauseGame()">
+                    <i class="bi bi-pause-fill fs-3 text-white"></i>
+                </button>
+            </div>
+            <div class="col" *ngIf="isPaused">
+                <button class="badge btn bg-success" (click)="pauseGame()">
+                    <i class="bi bi-play-fill fs-3 text-white"></i>
+                </button>
+            </div>
+            <div class="col" *ngIf="isGameStarted">
+                <button class="badge btn bg-dark" (click)="reset()">
+                    <i class="bi bi-arrow-clockwise fs-3"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-3" *ngIf="showAlert">
+            <div class="popup-box">
+                <i class="bi bi-exclamation-triangle-fill h4 text-danger"></i>
+                <div>
+                    <span class="text-danger">Are you sure you want to quit?</span>
+                </div>
+                <div class="d-flex p-2 mt-2 gap-3 justify-content-center">
+                    <button type="button" class="alert-btn" (click)="onClickOk()">Yes</button>
+                    <button type="button" class="alert-btn" (click)="onClickNo()">No</button>
+                </div>
+            </div>
+        </div>
+        <div class="mb-4">
+            <div class="d-flex justify-content-center">
+                <span class="position-relative  p-1 rounded-circle mb-3" style="height: 15px; width: 15px;"
+                    [ngStyle]="{'background-color': disableBlackButton ? 'transparent': '#b1f0b1'}"
+                    ngClass="blink-animation">
+                </span>
+            </div>
+            <span class="badge rounded-pill bg-black fs-4">
+                {{ blackPlayer.minutes | number: '2.0' }} :
+                {{ blackPlayer.seconds | number:'2.0' }}
+            </span>
+        </div>
+        <div class="row justify-content-evenly">
+            <button (click)="startAndStopClock(false)" type="button" class="btn btn-outline-dark circle-black"
+                [disabled]="disableBlackButton">
+                <span>
+                    STOP
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

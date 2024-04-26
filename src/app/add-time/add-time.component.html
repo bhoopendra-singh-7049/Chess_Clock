@@ -1,0 +1,28 @@
+<form class="form-horizontal justify-content-center" [formGroup]="form" name="form" #f="ngForm"
+    (submit)="form.valid && submit()">
+    <div class="form-group row"
+        [ngClass]="{ 'validation-error' : (getPlayerTimeControl?.dirty || getPlayerTimeControl?.touched) && getPlayerTimeControl?.invalid}">
+        <div class="row justify-content-center">
+            <div class="mb-5 text-center">
+                <span class="fs-3 fw-bolder text-body-primary">Hi!</span>
+            </div>
+        </div>
+
+        <div class="row justify-content-evenly">
+            <div class="col-6 d-flex">
+                <input type="text" name="playerTime" class="form-control" placeholder="Enter play time"
+                    formControlName="playerTime" />
+                <span *ngIf="(f.submitted || getPlayerTimeControl?.touched) && getPlayerTimeControl?.errors"
+                    class="position-relative  translate-middle p-1 bg-danger border border-light rounded-circle"
+                    style="height: 1px; right: 10px; top: 50%;">
+                </span>
+            </div>
+        </div>
+
+        <div class="row justify-content-evenly">
+            <div class="text-center mt-3">
+                <button [disabled]="form.invalid" class="btn btn-primary" type="submit">Next</button>
+            </div>
+        </div>
+    </div>
+</form>
