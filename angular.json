@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angularChessClock": {
+    "Chess_Clock": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angularChessClock:build:production"
+              "browserTarget": "Chess_Clock:build:production"
             },
             "development": {
-              "browserTarget": "angularChessClock:build:development"
+              "browserTarget": "Chess_Clock:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angularChessClock:build"
+            "browserTarget": "Chess_Clock:build"
           }
         },
         "test": {
