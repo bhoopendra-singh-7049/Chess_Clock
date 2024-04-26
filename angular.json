@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-chess-clock",
+            "outputPath": "dist/chess_clock",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [

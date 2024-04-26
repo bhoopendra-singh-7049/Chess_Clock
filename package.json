@@ -1,5 +1,5 @@
 {
-  "name": "angular-chess-clock",
+  "name": "chess_clock",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
