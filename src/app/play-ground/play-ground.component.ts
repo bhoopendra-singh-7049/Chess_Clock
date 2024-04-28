@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SoundService } from '../sound.service';
 
 
 class Player {
@@ -37,7 +38,11 @@ export class PlayGroundComponent implements OnInit {
     isRunning: false
   };
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private soundService: SoundService
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -135,10 +140,18 @@ export class PlayGroundComponent implements OnInit {
     this.showAlert = false;
     if (!this.isPaused) {
       this.isPaused = true;
-    } else if (this.isPaused) {
-      this.isPaused = true;
     } else {
       this.isPaused = false;
     }
+  }
+
+  toggleBlackInput() {
+    this.soundService.playSound();
+    this.startAndStopClock(false);
+  }
+
+  toggleWhiteInput() {
+    this.soundService.playSound();
+    this.startAndStopClock(true);
   }
 }
