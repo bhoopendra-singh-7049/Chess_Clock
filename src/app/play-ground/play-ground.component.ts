@@ -59,11 +59,13 @@ export class PlayGroundComponent implements OnInit {
   };
 
   startGame() {
+    this.vibrate();
     this.isGameStarted = true;
     this.startAndStopClock(true);
   }
 
   pauseGame() {
+    this.vibrate();
     this.isPaused = !this.isPaused;
     if (this.isPaused) {
       this.disableWhiteButton = true;
@@ -118,6 +120,7 @@ export class PlayGroundComponent implements OnInit {
   }
 
   reset() {
+    this.vibrate();
     this.showAlert = true;
     this.isPaused = true;
   }
@@ -130,6 +133,7 @@ export class PlayGroundComponent implements OnInit {
   }
 
   onClickOk() {
+    this.vibrate();
     this.resetPlayer(this.whitePlayer);
     this.resetPlayer(this.blackPlayer);
     this.isGameStarted = false;
@@ -137,6 +141,7 @@ export class PlayGroundComponent implements OnInit {
   }
 
   onClickNo() {
+    this.vibrate();
     this.showAlert = false;
     if (!this.isPaused) {
       this.isPaused = true;
@@ -147,11 +152,28 @@ export class PlayGroundComponent implements OnInit {
 
   toggleBlackInput() {
     this.soundService.playSound();
+    this.vibrate();
     this.startAndStopClock(false);
   }
 
   toggleWhiteInput() {
     this.soundService.playSound();
+    this.vibrate();
     this.startAndStopClock(true);
+  }
+
+  vibrate(): void {
+    if (!window) {
+      return;
+    }
+
+    if (!window.navigator) {
+      return;
+    }
+
+    if (!(window.navigator as any).vibrate) {
+      return;
+    }
+    (window.navigator as any).vibrate([200, 100, 200]);
   }
 }
