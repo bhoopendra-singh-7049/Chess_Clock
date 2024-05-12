@@ -174,6 +174,6 @@ export class PlayGroundComponent implements OnInit {
     if (!(window.navigator as any).vibrate) {
       return;
     }
-    (window.navigator as any).vibrate([100, 100]);
+    (window.navigator as any).vibrate([100]);
   }
 }
